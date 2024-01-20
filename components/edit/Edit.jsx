@@ -17,7 +17,7 @@ console.log(slug, 'slug inside');
 
 useEffect(() => {
         async function fetchBlog() {
-            const res = await fetch(`http://localhost:3000/api/posts/${slug}`)
+            const res = await fetch(`/api/posts/${slug}`)
 
             const data = await res.json()
 console.log(data, "blogcececsecsecsecsecsecs");

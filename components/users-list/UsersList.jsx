@@ -5,7 +5,7 @@ import User from "../user/User";
 
 const getData = async (page, cat) => {
   const res = await fetch(
-    `http://localhost:3000/api/users`,
+    `/api/users`,
     {
       cache: "no-store",
     }

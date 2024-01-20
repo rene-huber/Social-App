@@ -19,7 +19,7 @@ const onePost = async ({ params, page, cat }) => {
   
   
   const getData = async (page, cat) => {
-    const res = await fetch(`http://localhost:3000/api/posts/${slug}`, {
+    const res = await fetch(`/api/posts/${slug}`, {
       cache: "no-store",
     }, { next: { revalidate: 0 } });
 
