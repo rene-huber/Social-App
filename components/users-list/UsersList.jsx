@@ -5,7 +5,7 @@ import User from "../user/User";
 
 const getData = async (page, cat) => {
   const res = await fetch(
-    `/api/users`,
+    `https://final-project-blue-ten.vercel.app/api/users`,
     {
       cache: "no-store",
     }

@@ -17,7 +17,7 @@ console.log(slug, 'slug inside');
 
 useEffect(() => {
         async function fetchBlog() {
-            const res = await fetch(`/api/posts/${slug}`)
+            const res = await fetch(`https://final-project-blue-ten.vercel.app/api/posts/${slug}`)
 
             const data = await res.json()
 console.log(data, "blogcececsecsecsecsecsecs");
@@ -44,7 +44,7 @@ console.log(data, "blogcececsecsecsecsecsecs");
 
 
     try {
-      const res = await fetch(`/api/posts/${slug}`, {
+      const res = await fetch(`https://final-project-blue-ten.vercel.app/api/posts/${slug}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
