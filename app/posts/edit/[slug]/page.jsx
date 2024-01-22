@@ -27,7 +27,7 @@ console.log(slug, 'slug55555555555');
 
   useEffect(() => {
         async function fetchBlog() {
-            const res = await fetch(`https://final-project-blue-ten.vercel.app/api/posts/${slug}`)
+            const res = await fetch(`http://localhost:3000/api/posts/${slug}`)
 
             const data = await res.json()
 console.log(data, "blogcececsecsecsecsecsecs");
