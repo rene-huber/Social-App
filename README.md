@@ -1,1 +1,1 @@
-[DEMO](https://rene-huber.site/)
+[Live DEMO](https://rene-huber.site/)
