@@ -36,13 +36,13 @@ const Navbar = () => {
       </div>
       <div className={css.userEmail}>
       
-     {/*
+
        {
             session?.user
               ? ( <p>{session?.user?.email}</p>)
               : (<p className={css.notSigned}>Not signed in</p>)
           }
-      */}
+   
       
       </div>
       <div className={css.links}>
