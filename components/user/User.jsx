@@ -19,7 +19,7 @@ const User = async ({ item }) => {
     <div key={item.title}>
      
      
-     <Link href={`/user/${slugifiedName}`}>
+     <Link href={`/user/${item.id}`}>
           <Image src={item.image} alt={item.title} width={30} height={30} />
    
         </Link>
