@@ -3,6 +3,7 @@ import styles from "./card.module.css";
 import Link from "next/link";
 import { getCurrentUser } from "@/utils/session";
 import LikeButton from "../like/LikeButton";
+import Follow from "../follow/Follow";
 
 
 
@@ -29,6 +30,7 @@ const Card = async ({ item }) => {
       }
       <p>views: {item.views}</p>
       <LikeButton userEmail={userr?.user.email} slug={item.slug} />
+      <Follow userEmail={userr?.user.email} authorEmail={item.userEmail} />
      
     </div>
   );

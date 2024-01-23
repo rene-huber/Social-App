@@ -113,19 +113,12 @@ console.log(slug, "slug 8888888888888888888")
 
   return (
     <form onSubmit={handleSubmit}>
-    <input type="text" placeholder='Title...' value={title} onChange={(e) => setTitle(e.target.value)} />
-      <select className={styles.select} onChange={(e) => setCatSlug(e.target.value)}>
-        <option value="catSlug">cat-a</option>
-        <option value="cat-a">cat-a</option>
-        <option value="cat-b">cat-b</option>
-        <option value="cat-c">cat-c</option>
-      </select>
+   
+     
+      <label htmlFor='image'>{title}</label>
       <textarea placeholder='Description...'  value={desc} onChange={(e) => setDesc(e.target.value)} />
-      <label htmlFor='image'>Upload Image</label>
 <Image src={photo} width={200} height={200}  alt="blabla"/>
-      <input id='image' type="file" style={{ display: 'none' }}  onChange={(e) => setPhoto(e.target.files[0])} />
-      {isLoading ? <p>wait..upload</p> : null}
-      {error ? <p>Error: {error}</p> : null}
+ 
       <button type="submit">Update Post</button>
     </form>
   );
