@@ -1,5 +1,5 @@
-import Image from "next/image"
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
 
 const slugify = (str) => {
   return str
@@ -10,25 +10,21 @@ const slugify = (str) => {
     .replace(/^-+|-+$/g, "");
 };
 
-
 const User = async ({ item }) => {
-
   const slugifiedName = slugify(item.name);
-  
+
   return (
     <div key={item.title}>
-     
-     
-     <Link href={`/user/${slugifiedName}`}>
-          <Image src={item.image} alt={item.title} width={30} height={30} />
-   
-        </Link>
-    
- 
-     
- 
-      
-     
+      <Link href={`/user/${item.id}`}>
+        <p>
+          {item.name
+            .toLowerCase()
+            .substring(0, 11)
+            .replace(/^./, (str) => str.toUpperCase())}
+        </p>
+
+        <Image src={item.image} alt={item.title} width={30} height={30} />
+      </Link>
     </div>
   );
 };

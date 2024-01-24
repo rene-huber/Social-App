@@ -1,37 +1,41 @@
+import prisma from "@/utils/prismaConnect";
+import Image from "next/image";
+import Link from "next/link";
 
+const OnePost = async ({ params }) => {
 
-const onePost = async (req) => {
+  const id = params.id;
 
- const { slug } = req.params;
-
-
- 
- const authorName  = "gopublicidad-estudiocreativo"
- 
- const post = await prisma.post.findMany({
-   where: {
-     user: {
-        name: slug
-      }
+  const user = await prisma.user.findUnique({
+    where: {
+      id: id,
     },
-   
-  });
-  
-  console.log(post, "slugrgsrbsrbdrbdrbdrbdrbdrbdrbdrbdrbh");
+});
 
+const userEmail = user.email;
+console.log(userEmail, "userEmail")
 
+  const posts = await prisma.post.findMany({ where: {userEmail: userEmail} })
 
-  return (
-   <>
-   
-   {post.map((post) => (
-      <div key={post.id}>
-        <h1>{post.title}</h1>
-        </div>
+return(
+  <div>
+    {posts?.map((item) => (
+      <div key={item.title}>
+        <h1>{item.title}</h1>
+        <Link href={`/posts/${item.slug}`}>
+        <Image src={item.img} alt={item.title} width={130} height={130} />
+        </Link>
+
+       
+      </div>
     ))}
+  </div>
+)
 
-   </>)
-}
 
 
-export default onePost;
+
+  
+};
+
+export default OnePost;
