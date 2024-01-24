@@ -55,6 +55,8 @@ model User {
   Post          Post[]
   Comment       Comment[]
   likes     Like[] 
+   followers Follow[] @relation("follower")
+  following Follow[] @relation("following")
 }
 
 model VerificationToken {
@@ -120,4 +122,14 @@ model Like {
   user      User     @relation(fields: [userEmail], references: [email])
 
   @@unique([postSlug, userEmail])
+}
+
+model Follow {
+  id          String   @id @default(cuid()) @map("_id")
+  followerId  String
+  followingId String
+  follower    User     @relation("follower", fields: [followerId], references: [id])
+  following   User     @relation("following", fields: [followingId], references: [id])
+
+  @@unique([followerId, followingId])
 }
