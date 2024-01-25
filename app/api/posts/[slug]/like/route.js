@@ -12,13 +12,13 @@ export const PUT = async (req,{ params}) => {
   const session = await getCurrentUser();
   const userEmail = session?.user?.email;
 
-  console.log(session, "LIKEEEEEEEE 75757")
+ console.log(userEmail, "userEmailu44444")
 
-  // if (!session) {
-  //   return new NextResponse(
-  //     JSON.stringify({ message: "Not Authenticated!" }, { status: 401 })
-  //   );
-  // }
+  if (!session) {
+    return new NextResponse(
+      JSON.stringify({ message: "Not Authenticated!" }, { status: 401 })
+    );
+  }
 
   try {
     let like = await prisma.like.findUnique({
@@ -29,7 +29,7 @@ export const PUT = async (req,{ params}) => {
         },
       },
     });
-
+console.log(like, "LIKEEEEEEEE 7575wdwdwdwdwdwdw7")
     if (like) {
       await prisma.like.delete({ where: { id: like.id } });
     } else {
