@@ -12,7 +12,7 @@ const Dashboard = () => {
 
   const { data: session } = useSession()
 
-console.log(session?.user.role)
+ 
 
 if(session?.user?.role !== "ADMIN"){
   redirect('/login');

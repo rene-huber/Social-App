@@ -12,7 +12,7 @@ import { useRouter } from 'next/navigation'
 export const GET = async (req, { params }) => {
   const { id } = params;
 
-console.log(id, "dvsdvsdvsdvsdvsdvsdvsdvsdvsdvsdvsdvsdvsdvsdvsdvs")
+ 
 
   try {
 

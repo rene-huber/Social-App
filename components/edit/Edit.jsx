@@ -7,7 +7,7 @@ function EditPost({ slug }) {
 
   const { data: session, status } = useSession();
   const router = useRouter();
-console.log(slug, 'slug inside');
+ 
 
   const CLOUD_NAME = 'huberlin';
   const UPLOAD_PRESET = 'blog13';
@@ -20,7 +20,7 @@ useEffect(() => {
             const res = await fetch(`http://localhost:3000/api/posts/${slug}`)
 
             const data = await res.json()
-console.log(data, "blogcececsecsecsecsecsecs");
+ 
             setTitle(data?.post?.title)
             setDesc(data.desc)
            

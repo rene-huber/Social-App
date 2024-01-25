@@ -9,10 +9,11 @@ import { authOptions } from '@/utils/auth';
 
 export const PUT = async (req,{ params}) => {
   const  {slug} = params;
-  const session = await getCurrentUser();
+  // const session = await getCurrentUser();
+  const session = await getServerSession(authOptions);
   const userEmail = session?.user?.email;
 
- console.log(userEmail, "userEmailu44444")
+  console.log(userEmail, "GET LIKES 75757")
 
   if (!session) {
     return new NextResponse(
@@ -29,7 +30,7 @@ export const PUT = async (req,{ params}) => {
         },
       },
     });
-console.log(like, "LIKEEEEEEEE 7575wdwdwdwdwdwdw7")
+
     if (like) {
       await prisma.like.delete({ where: { id: like.id } });
     } else {
@@ -52,14 +53,33 @@ console.log(like, "LIKEEEEEEEE 7575wdwdwdwdwdwdw7")
 export const GET = async (req, { params }) => {
   const { slug } = params;
 
+  const session = await getAuthSession();
+  const userEmail = session?.user?.email;
+
+  let likeUser = null;
+  
   try {
+    // Obtener likeUser solo si userEmail existe
+    if (userEmail) {
+      likeUser = await prisma.like.findUnique({
+        where: {
+          postSlug_userEmail: {
+            postSlug: slug,
+            userEmail: userEmail,
+          },
+        },
+      });
+    }
+
+    // Obtener el conteo de 'likes' independientemente de la sesión del usuario
     const likesCount = await prisma.like.count({
       where: {
         postSlug: slug,
       },
     });
 
-    return new NextResponse(JSON.stringify({ likesCount }), { status: 200 });
+    // Retornar la respuesta
+    return new NextResponse(JSON.stringify({ likesCount, likeUser }), { status: 200 });
   } catch (err) {
     console.error(err);
     return new NextResponse(

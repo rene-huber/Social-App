@@ -13,7 +13,7 @@ const OnePost = async ({ params }) => {
 });
 
 const userEmail = user.email;
-console.log(userEmail, "userEmail")
+ 
 
   const posts = await prisma.post.findMany({ where: {userEmail: userEmail} })
 

@@ -10,7 +10,7 @@ import Follow from "../follow/Follow";
 const Card = async ({ item }) => {
 
   const userr = await getCurrentUser();
-  console.log(userr?.user.email, "session");
+ 
   
   return (
     <div className={styles.container} key={item.title}>
