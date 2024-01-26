@@ -8,7 +8,7 @@ import ToasterContext from "@/providers/ToasterProvider";
 import { config, library } from '@fortawesome/fontawesome-svg-core';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import '@fortawesome/fontawesome-svg-core/styles.css'; 
-import UserList from "@/components/users-list/UsersList";
+
  
 config.autoAddCss = false; // Don't add the CSS by default
 
@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
           <ThemeContext>
             <ToasterContext />
             <Navbar />
-            <UserList />
+          
             
       
             {children}
