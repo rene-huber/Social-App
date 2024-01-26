@@ -15,7 +15,10 @@ const OnePost = async ({ params }) => {
 const userEmail = user.email;
  
 
-  const posts = await prisma.post.findMany({ where: {userEmail: userEmail} })
+  const posts = await prisma.post.findMany({ 
+    where: {userEmail: userEmail}, 
+    include: { user: true }
+  })
 
 return(
   <div>

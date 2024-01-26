@@ -11,6 +11,7 @@ const Card = async ({ item }) => {
 
   const userr = await getCurrentUser();
  
+  const profile = userr?.user?.id
   
   return (
     <div className={styles.container} key={item.title}>
@@ -30,7 +31,7 @@ const Card = async ({ item }) => {
       }
       <p>views: {item.views}</p>
       <LikeButton userEmail={userr?.user.email} slug={item.slug} />
-      <Follow userEmail={userr?.user.email} authorEmail={item.userEmail} />
+      <Follow userEmail={userr?.user.email} authorEmail={item.userEmail} profile={profile} />
      
     </div>
   );

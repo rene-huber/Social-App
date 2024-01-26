@@ -36,7 +36,7 @@ const LikeButton = ({ userEmail, slug }) => {
         setLiked(false)
       }
     };
-console.log(checkIfLiked, "checkIfLiked52352352352352352352352");
+
     checkIfLiked()
   }, [userEmail, slug, setLiked, setLikesCount, liked, likesCount])
 
