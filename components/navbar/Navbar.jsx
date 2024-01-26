@@ -48,7 +48,7 @@ const Navbar = () => {
       <div className={css.links}>
         <Link href="/" className={css.link}>Home</Link>
         <Link href="/posts" className={css.link}>Posts</Link>
-        <Link href="/dashboard" className={css.link}>dashboard</Link>
+        {/* <Link href="/dashboard" className={css.link}>dashboard</Link> */}
         
 <Toggle />
         <AuthLinks />

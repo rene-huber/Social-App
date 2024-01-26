@@ -15,7 +15,7 @@ export const PUT = async (req,{ params}) => {
 
   try {
     let like;
-    let action; // Acción realizada: 'liked' o 'unliked'
+    let action; 
 
     const existingLike = await prisma.like.findUnique({
       where: {
@@ -32,17 +32,7 @@ export const PUT = async (req,{ params}) => {
       await prisma.like.delete({ where: { id: existingLike.id } });
       action = 'unliked';
 
-      // await prisma.post.update({
-      //   where: { slug: slug },
-      //   data: {
-      //     likesCount: {
-      //       decrement: action === 'unliked' ? 1 : 0,
-      //     },
-      //   },
-      //   select: {
-      //     likesCount: true,
-      //   },
-      // });
+   
 
     } else {
       like = await prisma.like.create({
@@ -62,38 +52,6 @@ export const PUT = async (req,{ params}) => {
   }
 };
 
-//   if (!session) {
-//     return new NextResponse(
-//       JSON.stringify({ message: "Not Authenticated!" }, { status: 401 })
-//     );
-//   }
-
-//   try {
-//     let like = await prisma.like.findUnique({
-//       where: {
-//         postSlug_userEmail: {
-//           postSlug: slug,
-//           userEmail: userEmail,
-//         },
-//       },
-//     });
-
-//     if (like) {
-//       await prisma.like.delete({ where: { id: like.id } });
-//     } else {
-//       like = await prisma.like.create({
-//         data: { postSlug: slug, userEmail: userEmail },
-//       });
-//     }
-
-//     return new NextResponse(JSON.stringify(like, { status: 200 }));
-//   } catch (err) {
-//     console.error(err);
-//     return new NextResponse(
-//       JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
-//     );
-//   }
-// };
 
 //--------------GET-----------nr likes---------
   
