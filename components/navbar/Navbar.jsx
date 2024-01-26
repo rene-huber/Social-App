@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import css from "./navbar.module.css";
 import Image from "next/image";
 import noPicture from "@/public/noImage.png";
@@ -9,9 +9,36 @@ import AuthLinks from "@/components/authLinks/AuthLinks";
 
 import {signIn, signOut, useSession} from 'next-auth/react'
 import Toggle from '../toggle/Toggle';
+import User from '../user/User';
+
+
  
 
+
+
 const Navbar = () => {
+  
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const res = await fetch(`http://localhost:3000/api/users`, { cache: "no-store" });
+        if (!res.ok) throw new Error("Failed to fetch data");
+        
+        const data = await res.json();
+        setData(data);
+       
+        return data;
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+  
+    getData();
+  }, []);
+ 
+  console.log("Data from getData():", data); // Mostrando los datos en consola
 
   const [showDropdown, setShowDropdown] = useState(false)
   const {data: session} = useSession()
@@ -23,6 +50,7 @@ const Navbar = () => {
 
   return (
     <div className={css.container}>
+
       <div className={css.social}>
 {
   session?.user ? (
@@ -35,13 +63,20 @@ const Navbar = () => {
       
       </div>
       <div className={css.userEmail}>
-      
 
-       {
+      {data?.slice(0,2).map((item, index) => (
+          <div key={index}>
+            <Link href={`/user/${item.id}`}>
+            <p>{item.name.slice(0,3)}</p> 
+            <Image src={item?.image || dancingbaby } alt={item.title} width={30} height={30} />
+            </Link>
+          </div>
+        ))}
+       {/* {
             session?.user
               ? ( <p>{session?.user?.email}</p>)
               : (<p className={css.notSigned}>Not signed in</p>)
-          }
+          } */}
    
       
       </div>
