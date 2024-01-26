@@ -1,39 +1,68 @@
 "use client"
-import React, { useState, useEffect } from 'react';
 
-const Follow = ({ userEmail, authorEmail }) => {
-  const [isFollowing, setIsFollowing] = useState(false);
+import {useEffect, useState} from 'react'
+import FollowList from '../followList/FollowList';
+
+
+const Follow = ({ userEmail, authorEmail, profile }) => {
+  
+  const [isFollowing, setIsFollowing] = useState(false);  
+  const [followers, setFollowers] = useState([]);
 
   useEffect(() => {
-    // Aquí debes verificar si el usuario actual está siguiendo al autor del post
-    // Esta lógica dependerá de cómo estés almacenando esta información
-  }, []);
+    const fetchFollowers = async () => {
+        try {
+            const response = await fetch(`/api/users/${profile}follow`, { method: 'GET' });
+            if (response.ok) {
+                const data = await response.json();
+                setFollowers(data);
+                console.log(data, 'data////////////////////')
+            } else {
+                // Manejar errores
+            }
+        } catch (error) {
+            console.error("Error al obtener seguidores:", error);
+        }
+    };
 
-  const handleFollow = async () => {
+    fetchFollowers();
+},[userEmail, authorEmail]);
+
+
+
+
+  const toggleFollow = async () => {
     try {
-      const response = await fetch('/api/follow', {
+      const response = await fetch(`/api/users/${profile}/follow`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ followerEmail: userEmail, followingEmail: authorEmail }),
       });
-
-      if (response.ok) {
-        setIsFollowing(!isFollowing); // Cambiar el estado de seguimiento
-      } else {
-        console.error('Failed to follow/unfollow');
-      }
+      const data = await response.json();
+      // Maneja la respuesta
+      console.log(data, 'data3323232323')
     } catch (error) {
-      console.error('Error:', error);
+      // Maneja los errores
     }
   };
 
+  
+
+
+
   return (
-    <button onClick={handleFollow}>
-      {isFollowing ? 'Unfollow' : 'Follow'}
-    </button>
+    <div>
+      <button onClick={toggleFollow}>
+        {isFollowing ? 'Unfollow' : 'Follow'}
+      </button>
+      <p>Author: {authorEmail}</p>
+      <p>User: {userEmail}</p>
+     <FollowList userEmail={userEmail}/>
+    </div>
   );
-};
+}
+
 
 export default Follow;

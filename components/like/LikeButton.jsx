@@ -19,6 +19,7 @@ const LikeButton = ({ userEmail, slug }) => {
           headers: {
             'Content-Type': 'application/json',
           },
+          cache: 'no-cache', 
         });
 
         if (response.ok) {
@@ -38,7 +39,7 @@ const LikeButton = ({ userEmail, slug }) => {
     };
 
     checkIfLiked()
-  }, [userEmail, slug])
+  }, [userEmail, slug, setLiked, setLikesCount, liked, likesCount])
 
 console.log( likesCount, "765785875785745745754754");
 console.log(liked,  "11111111111111111111111111");

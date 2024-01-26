@@ -11,7 +11,11 @@ import UserList from "../user-list/UserList";
 const Card = async ({ item }) => {
 
   const userr = await getCurrentUser();
-  // console.log(item.userEmail, "session54545454545454545454");
+
+ 
+  const profile = userr?.user?.id
+=======
+
   
   return (
     <div className={styles.container} key={item.title}>
@@ -32,7 +36,7 @@ const Card = async ({ item }) => {
       }
       <p>views: {item.views}</p>
       <LikeButton userEmail={userr?.user.email} slug={item.slug} />
-      <Follow userEmail={userr?.user.email} authorEmail={item.userEmail} />
+      <Follow userEmail={userr?.user.email} authorEmail={item.userEmail} profile={profile} />
      
     </div>
   );

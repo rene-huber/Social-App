@@ -23,14 +23,14 @@ const EditPost =  ({ params, page, cat }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
-console.log(slug, 'slug55555555555');
+ 
 
   useEffect(() => {
         async function fetchBlog() {
             const res = await fetch(`http://localhost:3000/api/posts/${slug}`)
 
             const data = await res.json()
-console.log(data, "blogcececsecsecsecsecsecs");
+ 
             setTitle(data?.post?.title)
             setDesc(data?.post?.desc)
             setPhoto(data?.post?.img)
@@ -82,7 +82,7 @@ console.log(data, "blogcececsecsecsecsecsecs");
     e.preventDefault();
   
     const slug = slugify(title);
-console.log(slug, "slug 8888888888888888888")
+ 
     const body = { title , desc}
     
     const res = await fetch(`/api/posts/${slug}`, {

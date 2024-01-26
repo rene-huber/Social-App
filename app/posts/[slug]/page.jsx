@@ -16,7 +16,7 @@ const onePost = async ({ params, page, cat }) => {
   const session = await getServerSession(authOptions);
   const userEmail = session?.user?.email;
 
-  console.log(slug, "slug inside")
+ 
   
   const getData = async (page, cat) => {
     const res = await fetch(`http://localhost:3000/api/posts/${slug}`, {

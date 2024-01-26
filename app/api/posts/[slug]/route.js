@@ -16,7 +16,7 @@ export const DELETE = async (req,{ params}) => {
   const session = await getCurrentUser();
   const userEmail = session?.user?.email;
 
-console.log(slug, session, "4444444444444")  
+ 
 
 
     if (!session) {

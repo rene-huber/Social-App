@@ -13,7 +13,7 @@ const LoginPage = () => {
 
   
   
-  console.log(status.status,   "status")
+ 
 
   const router = useRouter();
 
