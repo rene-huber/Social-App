@@ -1,4 +1,5 @@
 "use client"
+
 import {useEffect, useState} from 'react'
 import FollowList from '../followList/FollowList';
 
@@ -62,5 +63,6 @@ const Follow = ({ userEmail, authorEmail, profile }) => {
     </div>
   );
 }
+
 
 export default Follow;

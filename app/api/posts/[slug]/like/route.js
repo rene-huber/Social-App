@@ -9,6 +9,7 @@ import { authOptions } from '@/utils/auth';
 
 export const PUT = async (req,{ params}) => {
   const  {slug} = params;
+
   // const session = await getCurrentUser();
   const session = await getServerSession(authOptions);
   const userEmail = session?.user?.email;
@@ -17,14 +18,13 @@ export const PUT = async (req,{ params}) => {
     let like;
     let action; // Acción realizada: 'liked' o 'unliked'
 
+
     const existingLike = await prisma.like.findUnique({
       where: {
-        postSlug_userEmail: {
-          postSlug: slug,
-          userEmail: userEmail,
-        },
+        postSlug_userEmail: { postSlug: slug, userEmail: userEmail },
       },
     });
+
 
     if (existingLike) {
 
@@ -44,10 +44,12 @@ export const PUT = async (req,{ params}) => {
       //   },
       // });
 
+
     } else {
-      like = await prisma.like.create({
+      await prisma.like.create({
         data: { postSlug: slug, userEmail: userEmail },
       });
+
       action = 'liked';
      
     }
@@ -55,10 +57,13 @@ export const PUT = async (req,{ params}) => {
 
 
     return new NextResponse(JSON.stringify({ isLiked: action === 'liked', likesCount }), { status: 200 });
+
   } catch (err) {
     return new NextResponse(
+
             JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
           );
+
   }
 };
 
@@ -120,9 +125,7 @@ export const GET = async (req, { params }) => {
 
     
     const likesCount = await prisma.like.count({
-      where: {
-        postSlug: slug,
-      },
+      where: { postSlug: slug },
     });
 
     return new NextResponse(JSON.stringify({ likesCount, likeUser }), { status: 200 });
