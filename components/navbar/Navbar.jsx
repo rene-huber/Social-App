@@ -64,7 +64,7 @@ const Navbar = () => {
       </div>
       <div className={css.userEmail}>
 
-      {data?.slice(0,2).map((item, index) => (
+      {data?.slice(0,3).map((item, index) => (
           <div key={index}>
             <Link href={`/user/${item.id}`}>
             <p>{item.name.slice(0,3)}</p> 
