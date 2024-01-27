@@ -5,6 +5,7 @@ import { getCurrentUser } from "@/utils/session";
 import LikeButton from "../like/LikeButton";
 import Follow from "../follow/Follow";
 import UserList from "../users-list/UsersList";
+import {timeSince }from "@/utils/time";
 
 
 
@@ -24,6 +25,7 @@ const Card = async ({ item }) => {
         <div className={styles.textContainer}>
        
           <p>{item.desc.slice(0,19)}</p>
+          <p>{timeSince(item.createdAt)}</p>
         </div>
       </Link>
       {
