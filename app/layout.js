@@ -2,7 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import AuthProvider from "@/providers/AuthProvider";
 import ThemeContext from "@/context/ThemeContext";
-import Navbar from "@/components/navbar/Navbar";
+
 import ToasterContext from "@/providers/ToasterProvider";
 
 import { config, library } from '@fortawesome/fontawesome-svg-core';
@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
         <AuthProvider>
           <ThemeContext>
             <ToasterContext />
-            <Navbar />
+            
           {/* <UserList /> */}
             
       

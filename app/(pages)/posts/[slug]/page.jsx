@@ -9,12 +9,15 @@ import DeletePost from "@/components/deletePost/DeletePost";
 import EditPost from "@/components/edit/Edit";
 import Comments from "@/components/comments/Comments";
 
+
 const onePost = async ({ params, page, cat }) => {
 
   const userr = await getCurrentUser();
   const slug = params.slug;
   const session = await getServerSession(authOptions);
   const userEmail = session?.user?.email;
+
+
 
  
   

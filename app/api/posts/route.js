@@ -1,6 +1,7 @@
 import { getAuthSession } from "@/utils/auth";
 import prisma from "@/utils/prismaConnect";
 import { NextResponse } from "next/server";
+import { getCurrentUser } from '@/utils/session';
 
 
 
@@ -9,6 +10,11 @@ import { NextResponse } from "next/server";
 
 
 export const GET = async (req) => {
+
+  const session = await getCurrentUser();
+  const userEmail = session?.user?.email;
+
+  console.log(session, "sessionrbvdrbdrbdrbdrbdrbdrb")
   try {
     const posts = await prisma.post.findMany({
       orderBy: {
