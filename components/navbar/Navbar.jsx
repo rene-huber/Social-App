@@ -63,22 +63,17 @@ const Navbar = () => {
       
       </div>
       <div className={css.userEmail}>
-
+<p>last: </p>
       {data?.slice(0,3).map((item, index) => (
           <div key={index}>
             <Link href={`/user/${item.id}`}>
-            <p>{item.name.slice(0,3)}</p> 
-            <Image src={item?.image || dancingbaby } alt={item.title} width={30} height={30} />
+            
+            <Image className={css.roundedImage} src={item?.image || dancingbaby } alt={item.title} width={30} height={30} />
+            {/* <p>{item.name.slice(0,5)}</p>  */}
             </Link>
           </div>
         ))}
-       {/* {
-            session?.user
-              ? ( <p>{session?.user?.email}</p>)
-              : (<p className={css.notSigned}>Not signed in</p>)
-          } */}
-   
-      
+            
       </div>
       <div className={css.links}>
       <Link href="/posts" className={css.link}>Home</Link>
