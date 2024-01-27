@@ -17,8 +17,6 @@ export const DELETE = async (req,{ params}) => {
   const userEmail = session?.user?.email;
 
  
-
-
     if (!session) {
       return new NextResponse(
         JSON.stringify({ message: "Not Authenticated!" }, { status: 401 })
@@ -26,9 +24,6 @@ export const DELETE = async (req,{ params}) => {
     }
   
     try {
-
-      
-  
       const post = await prisma.post.findUnique({ where: { slug } });
       if (!post || post.userEmail !== userEmail) {
         return new NextResponse(
@@ -58,39 +53,15 @@ export const DELETE = async (req,{ params}) => {
 
 
 
+
 export const GET = async (req, { params }) => {
   const { slug } = params;
-  const session = await getAuthSession();
+  const session = await getCurrentUser();
+  const userEmail = session?.user?.email;
 
-
-
+console.log(userEmail, "userEmaievsevsevsevsevsevsesl")
 
   try {
-
-    // if (userEmail) {
-    //   const viewExists = await prisma.postView.findUnique({
-    //     where: {
-    //       postSlug_userEmail: {
-    //         postSlug: slug,
-    //         userEmail: userEmail,
-    //       },
-    //     },
-    //   });
-  
-    //   if (!viewExists) {
-    //     await prisma.post.update({
-    //       where: { slug},
-    //       data: { views: { increment: 1 } },
-    //     });
-  
-    //     await prisma.postView.create({
-    //       data: {
-    //         postSlug: slug,
-    //         userEmail: userEmail,
-    //       },
-    //     });
-    //   }
-    // }
 
 const post = await prisma.post.findUnique({
   where: { slug },
@@ -98,19 +69,6 @@ const post = await prisma.post.findUnique({
 });
 return new NextResponse(JSON.stringify({ post }, { status: 200 }));
     
-  
-
-    // const post = await prisma.post.update({
-    //   where: { slug },
-    //   data: { views: { increment: 1 } },
-    //   include: { user: true },
-    // });
-
-
-
-
-
-
   } catch (err) {
     console.log(err);
     return new NextResponse(
@@ -122,6 +80,10 @@ return new NextResponse(JSON.stringify({ post }, { status: 200 }));
 
   
   
+
+
+
+
   
   
   

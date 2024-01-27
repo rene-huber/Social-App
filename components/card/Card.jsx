@@ -4,18 +4,14 @@ import Link from "next/link";
 import { getCurrentUser } from "@/utils/session";
 import LikeButton from "../like/LikeButton";
 import Follow from "../follow/Follow";
-import UserList from "../user-list/UserList";
+import UserList from "../users-list/UsersList";
 
 
 
 const Card = async ({ item }) => {
 
   const userr = await getCurrentUser();
-
- 
-  const profile = userr?.user?.id
-=======
-
+  
   
   return (
     <div className={styles.container} key={item.title}>
@@ -27,7 +23,7 @@ const Card = async ({ item }) => {
         )}
         <div className={styles.textContainer}>
        
-          <h1>{item.title}</h1>
+          <p>{item.desc.slice(0,19)}</p>
         </div>
       </Link>
       {
@@ -36,7 +32,7 @@ const Card = async ({ item }) => {
       }
       <p>views: {item.views}</p>
       <LikeButton userEmail={userr?.user.email} slug={item.slug} />
-      <Follow userEmail={userr?.user.email} authorEmail={item.userEmail} profile={profile} />
+      <Follow userEmail={userr?.user.email} authorEmail={item.userEmail} />
      
     </div>
   );

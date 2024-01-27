@@ -93,8 +93,8 @@ async jwt({token, user}) {
 },
 
 pages: {
-  signIn: "/dashboard",
-  signOut: "/login",
+  signIn: "/",
+  signOut: "/register",
  
 },
 

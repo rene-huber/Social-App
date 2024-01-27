@@ -9,24 +9,28 @@ const AuthLinks = () => {
 
   const { status } = useSession();
 
+  const handleLogout = async () => {
+    await signOut({ redirect: true, callbackUrl: '/' });
+  }
+
   return (
     <>
-      {status === "unauthenticated" ? (<>
-        <Link href="/login" className={css.link}>
-          Login
-        </Link>
+      {status === "unauthenticated" ? (
+        <>
+          <Link href="/" className={css.link}>
+            Login
+          </Link>
 
-        <Link href="/register" className={css.link}>
-         Register
-        </Link>
+          <Link href="/register" className={css.link}>
+            Register
+          </Link>
         </>
-
       ) : (
         <>
           <Link href="/create-post" className={css.link}>
-            create post
+            Create Post
           </Link>
-          <span className={css.link} onClick={signOut}>
+          <span className={css.link} onClick={handleLogout}>
             Logout
           </span>
         </>
