@@ -10,7 +10,7 @@ const AuthLinks = () => {
   const { status } = useSession();
 
   const handleLogout = async () => {
-    await signOut({ redirect: true, callbackUrl: '/login' });
+    await signOut({ redirect: true, callbackUrl: '/' });
   }
 
   return (

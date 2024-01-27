@@ -11,7 +11,7 @@ import UserList from "../users-list/UsersList";
 const Card = async ({ item }) => {
 
   const userr = await getCurrentUser();
-  // console.log(item.userEmail, "session54545454545454545454");
+  
   
   return (
     <div className={styles.container} key={item.title}>
@@ -23,7 +23,7 @@ const Card = async ({ item }) => {
         )}
         <div className={styles.textContainer}>
        
-          <h1>{item.title}</h1>
+          <p>{item.desc.slice(0,19)}</p>
         </div>
       </Link>
       {
