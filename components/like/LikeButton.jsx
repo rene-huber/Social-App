@@ -26,6 +26,7 @@ const LikeButton = ({ userEmail, slug }) => {
           const data = await response.json()
           setLiked(data.isLiked)
           setLikesCount(data.likesCount)
+          console.log(data, "daaatatatatatatata");
           
         } else {
           console.error("Failed to Like")
@@ -39,6 +40,10 @@ const LikeButton = ({ userEmail, slug }) => {
 
     checkIfLiked()
   }, [userEmail, slug, setLiked, setLikesCount, liked, likesCount])
+
+console.log( likesCount, "765785875785745745754754");
+console.log(liked,  "11111111111111111111111111");
+
 
   const handleLike = async () => {
     

@@ -4,19 +4,24 @@ import Link from "next/link";
 import { getCurrentUser } from "@/utils/session";
 import LikeButton from "../like/LikeButton";
 import Follow from "../follow/Follow";
+import UserList from "../user-list/UserList";
 
 
 
 const Card = async ({ item }) => {
 
   const userr = await getCurrentUser();
+
  
   const profile = userr?.user?.id
+=======
+
   
   return (
     <div className={styles.container} key={item.title}>
-     
+     <UserList authorEmail={item.userEmail} />
       <Link href={`/posts/${item.slug}`}>
+      
         {item.img && (
           <Image src={item.img} alt={item.title} width={300} height={300} />
         )}
