@@ -1,0 +1,19 @@
+.wrap{
+    width: 950px;
+  
+    margin: 0 auto;
+}
+.gridContainer {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en múltiples filas */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: center; /* Alinea los elementos verticalmente */
+    gap: 3px; /* Elimina el espacio entre los elementos */
+    padding: 20px; /* Agrega un poco de espacio alrededor de la cuadrícula */
+  }
+  
+  .gridItem {
+    flex: 0 0 calc(33.333% - 3px); /* Establece el ancho de cada elemento, ajusta -3px si es necesario */
+    /* Estilos adicionales para cada ítem, si son necesarios */
+  }
+  

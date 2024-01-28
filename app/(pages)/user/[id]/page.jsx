@@ -2,6 +2,7 @@ import UserList from "@/components/users-list/UsersList";
 import prisma from "@/utils/prismaConnect";
 import Image from "next/image";
 import Link from "next/link";
+import styles from './user.module.css';
 
 
 const OnePost = async ({ params }) => {
@@ -22,17 +23,14 @@ const userEmail = user.email;
   })
 
   return (
-    <div>
-      <UserList authorEmail={userEmail} />
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+    <div className={styles.wrap}>
+    
+      <div className={styles.gridContainer}>
         {posts?.map((item) => (
-          <div key={item.title}>
+          <div key={item.title} className={styles.gridItem}>
 
             <Link href={`/posts/${item.slug}`}>
-              
-                <Image src={item.img} alt={item.title} width={130} height={130} />
-               
-            
+              <Image src={item.img} alt={item.title} width={300} height={300} />
             </Link>
 
           </div>
@@ -40,10 +38,6 @@ const userEmail = user.email;
       </div>
     </div>
   );
-
-
-
-  
 };
 
 export default OnePost;

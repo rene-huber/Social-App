@@ -4,6 +4,7 @@ import { useState } from "react"
 import { signIn,signOut, useSession } from "next-auth/react";
 import { toast } from "react-hot-toast"
 import { useRouter } from 'next/navigation';
+import Link from "next/link";
 
 
 export default function Register() {
@@ -103,11 +104,7 @@ export default function Register() {
         
               <section>
         <div>OR</div>
-        {status === "authenticated" ? (
-    <button onClick={() => signOut()}>Log Out</button>
-        ) : (
-          <p>Not signed in</p>
-        )}
+       <Link href="/"> back to login</Link>
       </section>
 
             </div>

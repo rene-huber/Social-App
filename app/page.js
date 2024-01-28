@@ -4,17 +4,13 @@ import { useState, useEffect } from "react"
 import css from "./loginPage.module.css"
 import { useRouter } from "next/navigation"
 import toast from 'react-hot-toast';
+import Link from "next/link";
  
 
 const LoginPage = () => {
   const status = useSession();
   const router = useRouter();
-  // useEffect(() => {
-  //   if (status.status === "authenticated" && status.data.user.role === "ADMIN") {
-  //     router.push("/dashboard");
-  //   }
-  // }, [status.status]);
-
+ 
   useEffect(() => {
     if (status.status === "authenticated") {
       router.push("/posts");
@@ -50,10 +46,21 @@ const loginUser = async (e) => {
     <div className={css.container}>
   
 
-<form onSubmit={loginUser}>
+
+
+      <div className={css.wrapper}>
+        <div className={css.socialButton} onClick={() => signIn("google")}>
+          Sign in with Google
+        </div>
+
+        <div className={css.socialButton} onClick={() => signIn("github")}>Sign in with Github</div>
+        <div className={css.socialButton} onClick={() => signIn("facebook")}>Sign in with Facebook</div>
+
+
+
+        <form onSubmit={loginUser}>
   <div>
-    <h1>ADMIN role </h1>
-    <label htmlFor="email">admin@example.com<br></br> -pass- 123456</label>
+    <label htmlFor="email">Email address</label>
    
     <div>
       <input
@@ -89,26 +96,13 @@ const loginUser = async (e) => {
     <button type="submit">Sign in</button>
   </div>
 </form>
-
-      <div className={css.wrapper}>
-        <div className={css.socialButton} onClick={() => signIn("google")}>
-          Sign in with Google
-        </div>
-
-        <div className={css.socialButton} onClick={() => signIn("github")}>Sign in with Github</div>
-        <div className={css.socialButton} onClick={() => signIn("facebook")}>Sign in with Facebook</div>
-
-      
+<Link href={`/register`}>Dont have an account? </Link> 
       </div>
-      <section>
-        <div className={css.or}>OR</div>
-        {status !== "authenticated" ? (
+     
 
-    <button onClick={() => signOut()}>Log Out</button>
-        ) : (
-          <p>Not signed in</p>
-        )}
-      </section>
+
+
+     
     </div>
   );
 };
