@@ -48,13 +48,6 @@
   gap: 18px;
 }
 
-.left {
-  /* Ajustes adicionales para .left si es necesario */
-}
-
-.right {
-  /* Ajustes adicionales para .right si es necesario */
-}
 
 .textContainer p {
   margin: 0;
@@ -77,4 +70,4 @@
   cursor: pointer;
 }
 
-/* Estilos adicionales para el botón de like si es necesario */
+

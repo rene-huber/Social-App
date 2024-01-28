@@ -12,9 +12,11 @@ import EditPost from "@/components/edit/Edit";
 import Comments from "@/components/comments/Comments";
 import Card from "@/components/card/Card";
 import UserList from "@/components/users-list/UsersList";
+import Link from "next/link";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-regular-svg-icons';
+import { faPencil } from '@fortawesome/free-solid-svg-icons';
 
 
 const onePost = async ({ params, page, cat }) => {
@@ -101,12 +103,20 @@ return (
     <div className={styles.textContainer}>
     <div className={styles.header}>
       <UserList authorEmail={data?.post?.userEmail} />
-      <p className={styles.views}>views: {data?.post?.views}</p>
+      <p className={styles.views}><FontAwesomeIcon icon={faEye} /> views: {data?.post?.views}</p>
       
       </div>
       
       <p className={styles.postDescription}>{data?.post?.desc}</p>
-      {data?.post?.userEmail === userEmail && <DeletePost slug={slug} session={session} />}
+      {data?.post?.userEmail === userEmail && <>
+        <DeletePost slug={slug} session={session} />  
+       
+      <div className={styles.edit}>
+      <Link href={`/posts/edit/${data?.post?.slug}`}><FontAwesomeIcon icon={faPencil} />  EDIT</Link> {" "}{" "}
+      </div>
+      </>
+      }
+      
       <Comments postSlug={slug} />
     </div>
   </>

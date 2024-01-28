@@ -7,6 +7,12 @@
 .time{
     text-align: right;
 }
+
+.edit{
+    float: right;
+  right: 0;
+}
+
   .header {
     display: flex;
     justify-content: space-between;
@@ -23,7 +29,7 @@
   .postImage {
     margin: 3px auto  10px auto;
     width: 100%;
-    max-width: 500px; /* Ajusta el ancho máximo según tus necesidades */
+    max-width: 500px; 
     height: auto;
     border-radius: 5px;
   }
@@ -35,8 +41,8 @@ margin: 0 auto;
   
   .userList, .views, .postDescription {
     margin-bottom: 10px;
-    text-align: left; /* Asegúrate de que el texto esté alineado a la izquierda si lo prefieres así */
+    text-align: left; 
   }
   
-  /* Estilos adicionales para DeletePost y Comments si es necesario */
+  
   
