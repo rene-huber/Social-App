@@ -20,9 +20,17 @@ export const GET = async (req) => {
       orderBy: {
         createdAt: "desc",
       },
+      include: {
+        comments: true, 
+      },
     });
+    const postsWithCommentCount = posts.map(post => ({
+      ...post,
+      commentCount: post.comments.length
+    }));
 
-    return new NextResponse(JSON.stringify({ posts }, { status: 200 }));
+    // return new NextResponse(JSON.stringify({ posts }, { status: 200 }));
+    return new NextResponse(JSON.stringify({ posts: postsWithCommentCount }, { status: 200 }));
   } catch (err) {
     console.log(err);
     return new NextResponse(

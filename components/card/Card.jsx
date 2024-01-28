@@ -3,7 +3,7 @@ import styles from "./card.module.css";
 import Link from "next/link";
 import { getCurrentUser } from "@/utils/session";
 import LikeButton from "../like/LikeButton";
-import Follow from "../follow/Follow";
+// import Follow from "../follow/Follow";
 import UserList from "../users-list/UsersList";
 import {timeSince }from "@/utils/time";
 
@@ -26,6 +26,8 @@ const Card = async ({ item }) => {
        
           <p>{item.desc.slice(0,19)}</p>
           <p>{timeSince(item.createdAt)}</p>
+          <p>{item.commentCount} Comments</p>
+          
         </div>
       </Link>
       {
@@ -34,7 +36,7 @@ const Card = async ({ item }) => {
       }
       <p>views: {item.views}</p>
       <LikeButton userEmail={userr?.user.email} slug={item.slug} />
-      <Follow userEmail={userr?.user.email} authorEmail={item.userEmail} />
+      {/* <Follow userEmail={userr?.user.email} authorEmail={item.userEmail} /> */}
      
     </div>
   );

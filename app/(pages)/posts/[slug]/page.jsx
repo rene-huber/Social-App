@@ -8,6 +8,8 @@ import Image from "next/image";
 import DeletePost from "@/components/deletePost/DeletePost";
 import EditPost from "@/components/edit/Edit";
 import Comments from "@/components/comments/Comments";
+import Card from "@/components/card/Card";
+import UserList from "@/components/users-list/UsersList";
 
 
 const onePost = async ({ params, page, cat }) => {
@@ -80,13 +82,19 @@ if(data?.post ){
 
   return (
     <> 
+    {/* <Card item={data?.post} key={data?.post?.title} /> */}
+    
+
+<UserList authorEmail={data?.post?.userEmail} />
+    
+     <p>views: {data?.post?.views}</p>
       <Image src={data?.post?.img} alt={data?.post?.title} width={300} height={300} />
 
-      <h1>title: {data?.post?.title}</h1>
+      
       <p>Description: {data?.post?.desc}</p>
      
-      <p>views: {data?.post?.views}</p>
-      <p>Author: {data?.post?.userEmail}</p>
+      
+     
 
       {data?.post?.userEmail === userEmail && <DeletePost slug={slug} session={session} />}
       <Comments postSlug={slug} />

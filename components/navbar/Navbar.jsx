@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import css from "./navbar.module.css";
 import Image from "next/image";
-import noPicture from "@/public/noImage.png";
+import noPicture from "@/public/dancingbaby.gif";
 import dancingbaby from "@/public/dancingbaby.gif";
 import Link from "next/link";
 import AuthLinks from "@/components/authLinks/AuthLinks";

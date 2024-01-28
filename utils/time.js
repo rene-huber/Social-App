@@ -10,7 +10,7 @@ export function timeSince(date) {
         return parseInt(secondsPast / 60) + ' min';
     }
     if (secondsPast <= 86400) { 
-        return parseInt(secondsPast / 3600) + ' hrs';
+        return parseInt(secondsPast / 3600) + ' h';
     }
     
     const daysPast = Math.floor(secondsPast / 86400);
