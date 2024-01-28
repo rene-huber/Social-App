@@ -1,51 +1,80 @@
 .container {
-    margin-bottom: 50px;
-    display: flex;
-    align-items: center;
-    gap: 50px;
-  }
-  
-  .imageContainer {
-    flex: 1;
-    height: 350px;
-    position: relative;
-  }
-  
-  .image {
-    object-fit: cover;
-  }
-  
-  .textContainer {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
-  
-  .date {
-    color: gray;
-  }
-  
-  .category {
-    color: crimson;
-    font-weight: 500;
-  }
-  
-  .desc {
-    font-size: 18px;
-    font-weight: 300;
-    color: var(--softTextColor);
-  }
-  
-  .link {
-    border-bottom: 1px solid crimson;
-    width: max-content;
-    padding: 2px 0px;
-  }
-  
-  @media screen and (max-width: 1280px) {
-    .imageContainer {
-      display: none;
-    }
-  }
-  
+  border: 1px solid #3e3e3e;
+  border-radius: 8px;
+  padding: 20px 36px 27px 36px;
+  transition: 0.3s;
+  width: 400px;
+  margin: 0 auto 29px auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
+}
+
+.imageContainer {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.dataContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.description{
+  margin-top: 17px;
+  color: #5b5b5b;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  background: #191919;
+  padding: 12px;
+  border-radius: 3px;
+
+}
+
+
+
+.left, .right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.left {
+  /* Ajustes adicionales para .left si es necesario */
+}
+
+.right {
+  /* Ajustes adicionales para .right si es necesario */
+}
+
+.textContainer p {
+  margin: 0;
+  color: #d5d5d5;
+}
+
+.comments-views {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-link {
+  color: #007bff;
+  text-decoration: none;
+  margin-top: 12px;
+  display: inline-block;
+}
+
+.like-button, .follow-button {
+  cursor: pointer;
+}
+
+/* Estilos adicionales para el botón de like si es necesario */

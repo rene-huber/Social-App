@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import dancingBaby from "../../public/dancingbaby.gif"
+import styles from "./user.module.css"
 
 const slugify = (str) => {
   return str
@@ -21,7 +22,8 @@ const User = async ({ item }) => {
     <div key={item.title}>
      
      
-     <Link href={`/user/${item.id}`}>
+     <Link href={`/user/${item.id}`} className={styles.header}>
+     <Image src={item?.image || dancingBaby } alt={item.title} width={30} height={30} className={styles.avatar} />
      <p>
   {item.name
     .toLowerCase()
@@ -29,7 +31,7 @@ const User = async ({ item }) => {
     .replace(/^./, str => str.toUpperCase())}
 </p>
 
-          <Image src={item?.image || dancingBaby } alt={item.title} width={30} height={30} />
+          
    
         </Link>
     
