@@ -1,5 +1,7 @@
 import { getServerSession } from "next-auth";
 import { getCurrentUser } from '@/utils/session';
+import styles from "./onePost.module.css"
+import {timeSince }from "@/utils/time";
 
 
 import { authOptions } from "@/utils/auth";
@@ -8,6 +10,11 @@ import Image from "next/image";
 import DeletePost from "@/components/deletePost/DeletePost";
 import EditPost from "@/components/edit/Edit";
 import Comments from "@/components/comments/Comments";
+import Card from "@/components/card/Card";
+import UserList from "@/components/users-list/UsersList";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye } from '@fortawesome/free-regular-svg-icons';
 
 
 const onePost = async ({ params, page, cat }) => {
@@ -78,21 +85,33 @@ if(data?.post ){
 
 
 
-  return (
-    <> 
-      <Image src={data?.post?.img} alt={data?.post?.title} width={300} height={300} />
+return (
+  <> 
+    <div className={styles.imageContainer}>
+    <p className={styles.time}>{timeSince(data?.post?.createdAt)}</p>
+      <Image 
+        src={data?.post?.img} 
+        alt={data?.post?.title} 
+        width={480} 
+        height={480} 
+        className={styles.postImage} 
+      />
+    </div>
 
-      <h1>title: {data?.post?.title}</h1>
-      <p>Description: {data?.post?.desc}</p>
-     
-      <p>views: {data?.post?.views}</p>
-      <p>Author: {data?.post?.userEmail}</p>
-
+    <div className={styles.textContainer}>
+    <div className={styles.header}>
+      <UserList authorEmail={data?.post?.userEmail} />
+      <p className={styles.views}>views: {data?.post?.views}</p>
+      
+      </div>
+      
+      <p className={styles.postDescription}>{data?.post?.desc}</p>
       {data?.post?.userEmail === userEmail && <DeletePost slug={slug} session={session} />}
       <Comments postSlug={slug} />
-
-    </>
-  );
+    </div>
+  </>
+);
 };
+
 
 export default onePost;

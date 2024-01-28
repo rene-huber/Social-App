@@ -94,7 +94,7 @@ async jwt({token, user}) {
 
 pages: {
   signIn: "/",
-  signOut: "/register",
+  signOut: "/",
  
 },
 

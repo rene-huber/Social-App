@@ -15,30 +15,31 @@ const OnePost = async ({ params }) => {
 });
 
 const userEmail = user.email;
- 
 
   const posts = await prisma.post.findMany({ 
     where: {userEmail: userEmail}, 
     include: { user: true }
   })
 
-return(
-  <div>
-   <UserList authorEmail={userEmail} />
-    {posts?.map((item) => (
-      <div key={item.title}>
-        
-        <Link href={`/posts/${item.slug}`}>
-        <Image src={item.img} alt={item.title} width={130} height={130} />
-        <p>{item.desc}</p>
-        </Link>
+  return (
+    <div>
+      <UserList authorEmail={userEmail} />
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+        {posts?.map((item) => (
+          <div key={item.title}>
 
-       
+            <Link href={`/posts/${item.slug}`}>
+              
+                <Image src={item.img} alt={item.title} width={130} height={130} />
+               
+            
+            </Link>
+
+          </div>
+        ))}
       </div>
-    ))}
-  </div>
-)
-
+    </div>
+  );
 
 
 

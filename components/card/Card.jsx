@@ -1,40 +1,72 @@
+
 import Image from "next/image";
 import styles from "./card.module.css";
 import Link from "next/link";
 import { getCurrentUser } from "@/utils/session";
 import LikeButton from "../like/LikeButton";
-import Follow from "../follow/Follow";
+// import Follow from "../follow/Follow";
 import UserList from "../users-list/UsersList";
 import {timeSince }from "@/utils/time";
+import prisma from "@/utils/prismaConnect";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faComment } from '@fortawesome/free-regular-svg-icons';
+import { faPencil } from '@fortawesome/free-solid-svg-icons';
+import { faEye } from '@fortawesome/free-regular-svg-icons';
 
 
 const Card = async ({ item }) => {
 
   const userr = await getCurrentUser();
   
+  const pro = await prisma.user.findMany()
+  console.log(userr, "4f4f44f4f4f4f4f4f4f4f4f4f4f4")
   
   return (
     <div className={styles.container} key={item.title}>
-     <UserList authorEmail={item.userEmail} />
+
+   <header className={styles.header}>
+   <UserList authorEmail={item.userEmail} />
+     <p>{timeSince(item.createdAt)}</p>
+    </header>
+
       <Link href={`/posts/${item.slug}`}>
       
         {item.img && (
-          <Image src={item.img} alt={item.title} width={300} height={300} />
+          <Image src={item.img} className={styles.imageContainer} alt={item.title} width={300} height={300} />
         )}
-        <div className={styles.textContainer}>
+         </Link>
+
+        <div className={styles.dataContainer}>
        
-          <p>{item.desc.slice(0,19)}</p>
-          <p>{timeSince(item.createdAt)}</p>
-        </div>
-      </Link>
+       <div className={styles.left}>
+       <Link href={`/posts/${item.slug}`}>
+          <p><FontAwesomeIcon icon={faComment} /> comments: {item.commentCount}</p>
+          </Link>
+          <p><FontAwesomeIcon icon={faEye} /> views: {item.views}</p>
+         </div>
+
+          <div className={styles.right}>
+          <LikeButton userEmail={userr?.user.email} slug={item.slug} />
       {
-      item.userEmail === userr?.user.email &&         
-        <Link href={`/posts/edit/${item.slug}`}>EDIT POST</Link>
+        item.userEmail === userr?.user.email &&         
+        <Link href={`/posts/edit/${item.slug}`}><FontAwesomeIcon icon={faPencil} />  EDIT</Link>
       }
-      <p>views: {item.views}</p>
-      <LikeButton userEmail={userr?.user.email} slug={item.slug} />
-      <Follow userEmail={userr?.user.email} authorEmail={item.userEmail} />
+      </div>
+
+
+
+        </div>
+
+
+
+
+
+    
+      
+   
+      <p className={styles.description}>{item.desc.slice(0,88)}</p>
+      {/* <Follow userEmail={userr?.user.email} authorEmail={item.userEmail} profile={userr?.user.id}/> */}
      
     </div>
   );

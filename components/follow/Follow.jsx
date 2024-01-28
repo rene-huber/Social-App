@@ -18,10 +18,10 @@ const Follow = ({ userEmail, authorEmail, profile }) => {
                 setFollowers(data);
                 console.log(data, 'data////////////////////')
             } else {
-                // Manejar errores
+                throw new Error('error');
             }
         } catch (error) {
-            console.error("Error al obtener seguidores:", error);
+            console.error( error);
         }
     };
 
@@ -38,10 +38,11 @@ const Follow = ({ userEmail, authorEmail, profile }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ followerEmail: userEmail, followingEmail: authorEmail }),
+        body: JSON.stringify({ userEmail, authorEmail }),
       });
       const data = await response.json();
-      // Maneja la respuesta
+      setIsFollowing(data.isFollowing);
+      
       console.log(data, 'data3323232323')
     } catch (error) {
       // Maneja los errores
@@ -59,7 +60,8 @@ const Follow = ({ userEmail, authorEmail, profile }) => {
       </button>
       <p>Author: {authorEmail}</p>
       <p>User: {userEmail}</p>
-     <FollowList userEmail={userEmail}/>
+      <p>id: {profile}</p>
+    
     </div>
   );
 }

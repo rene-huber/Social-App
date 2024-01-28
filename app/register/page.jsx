@@ -3,9 +3,13 @@
 import { useState } from "react"
 import { signIn,signOut, useSession } from "next-auth/react";
 import { toast } from "react-hot-toast"
+import { useRouter } from 'next/navigation';
+
 
 export default function Register() {
   const { status } = useSession();
+  const router = useRouter();
+
 
     const [data, setData] = useState({
          name: '',
@@ -27,6 +31,8 @@ export default function Register() {
               if (res.ok) {
                 setData({ name: "", email: "", password: "" });
                 toast.success("User has been registered!");
+                router.push('/login')
+
               } else {
                 toast.error("Something went wrong!");
               }
@@ -39,10 +45,7 @@ export default function Register() {
         // router.push("/")
       }
       
-      if (status !== "authenticated") {
-          console.log("no",status)
-        // router.push("/")
-      }
+    
 
          return (
           <div>

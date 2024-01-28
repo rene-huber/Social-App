@@ -1,6 +1,8 @@
 "use client";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
 
 function DeletePost({ slug }) {
   const { data: session, status } = useSession();
@@ -34,7 +36,7 @@ function DeletePost({ slug }) {
     return <p>Loading...</p>;
   }
 
-  return <button onClick={() => handleDelete(slug)}>Delete Post</button>;
+  return <button onClick={() => handleDelete(slug)}><FontAwesomeIcon icon={faTrashCan} /> Delete Post</button>;
 }
 
 export default DeletePost;

@@ -2,8 +2,9 @@
 import React, { useState, useEffect } from 'react'
 import css from "./navbar.module.css";
 import Image from "next/image";
-import noPicture from "@/public/noImage.png";
+import noPicture from "@/public/dancingbaby.gif";
 import dancingbaby from "@/public/dancingbaby.gif";
+import logo from "@/public/logo.png";
 import Link from "next/link";
 import AuthLinks from "@/components/authLinks/AuthLinks";
 
@@ -54,7 +55,9 @@ const Navbar = () => {
       <div className={css.social}>
 {
   session?.user ? (
-    <Image src={dancingbaby} alt="user image" width={40} height={40} className={css.avatar} />
+    <Link href={`/posts`}>
+    <Image src={logo} alt="user image" width={40} height={40} />
+    </Link>
   ) : ( <p className={css.notSigned}>Social</p>
   )
 }
@@ -69,7 +72,7 @@ const Navbar = () => {
             <Link href={`/user/${item.id}`}>
             
             <Image className={css.roundedImage} src={item?.image || dancingbaby } alt={item.title} width={30} height={30} />
-            {/* <p>{item.name.slice(0,5)}</p>  */}
+          
             </Link>
           </div>
         ))}
