@@ -14,6 +14,16 @@
     border-radius: 10px;
   }
   
+
+  .register  {
+    background: rgb(17, 17, 17);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .emailLabel{margin-bottom: 10px;}
+
   .socialButton {
     padding: 20px;
     border-radius: 5px;
@@ -27,7 +37,7 @@
   }
   
   .socialButton:first-child {
-    background-color: #ff5555;
+    background-color: #D44638;
   }
   
   .socialButton:nth-child(2) {
