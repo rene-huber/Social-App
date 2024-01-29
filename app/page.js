@@ -5,6 +5,14 @@ import css from "./loginPage.module.css"
 import { useRouter } from "next/navigation"
 import toast from 'react-hot-toast';
 import Link from "next/link";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+
  
 
 const LoginPage = () => {
@@ -50,18 +58,21 @@ const loginUser = async (e) => {
 
       <div className={css.wrapper}>
         <div className={css.socialButton} onClick={() => signIn("google")}>
-          Sign in with Google
+        <FontAwesomeIcon icon={faGoogle} /> &nbsp; Sign in with Google
         </div>
 
-        <div className={css.socialButton} onClick={() => signIn("github")}>Sign in with Github</div>
-        <div className={css.socialButton} onClick={() => signIn("facebook")}>Sign in with Facebook</div>
+        <div className={css.socialButton} onClick={() => signIn("github")}>
+        <FontAwesomeIcon icon={faGithub} /> &nbsp; Sign in with Github</div>
+        <div className={css.socialButton} onClick={() => signIn("facebook")}>
+        <FontAwesomeIcon icon={faFacebook} /> &nbsp; Sign in with Facebook</div>
 
 
 
         <form onSubmit={loginUser}>
-  <div>
-    <label htmlFor="email">Email address</label>
-   
+  <div >
+  <div className={css.emailLabel}>
+    <label htmlFor="email" ><FontAwesomeIcon icon={faEnvelope} /> Email address</label>  
+   </div>
     <div>
       <input
         id="email"
@@ -96,7 +107,7 @@ const loginUser = async (e) => {
     <button type="submit">Sign in</button>
   </div>
 </form>
-<Link href={`/register`}>Dont have an account? </Link> 
+<Link href={`/register`}className={css.register}><FontAwesomeIcon icon={faUser}/> Dont have an account? </Link> 
       </div>
      
 
