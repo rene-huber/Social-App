@@ -13,8 +13,8 @@ const CreatePost = () => {
   const { status } = useSession();
   const router = useRouter();
 
-  const CLOUD_NAME = 'huberlin';
-  const UPLOAD_PRESET = 'blog13';
+  const CLOUD_NAME = 'here your ***** ';
+  const UPLOAD_PRESET = 'here your ***** ';
 
   const [photo, setPhoto] = useState('');
   const [desc, setDesc] = useState("");
