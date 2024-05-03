@@ -1,25 +1,34 @@
+
+
 .container {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 60px;
+ 
+    background: url("https://w1.rene-huber.eu/BK-THREAD.png");
+    background-position: center top;
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 5%;
   }
   
   .wrapper {
-    background-color: #000000;
-    padding: 150px 200px;
+    background-color: #000000b4;
+    padding: 55px 70px;
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 31px;
     border-radius: 10px;
+    border: 1px solid #555555;
   }
   
 
   .register  {
-    background: rgb(17, 17, 17);
+    background: rgb(41 41 41);
     padding: 10px;
     border-radius: 5px;
     text-align: center;
+    
   }
 
   .emailLabel{margin-bottom: 10px;}
@@ -41,7 +50,7 @@
   }
   
   .socialButton:nth-child(2) {
-    background-color: #111;
+    background-color: rgb(41 41 41);
   }
   
   .socialButton:nth-child(3) {

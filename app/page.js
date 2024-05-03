@@ -37,6 +37,7 @@ const loginUser = async (e) => {
   signIn('credentials',
    {...data, redirect: false
   })
+
   .then((callback) => {
       if (callback?.error) {
           toast.error(callback.error)
@@ -44,6 +45,7 @@ const loginUser = async (e) => {
 
       if(callback?.ok && !callback?.error) {
           toast.success('Logged in successfully!')
+          router.push("/posts");
       }
   } )
 }

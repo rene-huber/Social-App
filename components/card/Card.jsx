@@ -48,10 +48,12 @@ const Card = async ({ item }) => {
 
           <div className={styles.right}>
           <LikeButton userEmail={userr?.user.email} slug={item.slug} />
-      {
-        item.userEmail === userr?.user.email &&         
-        <Link href={`/posts/edit/${item.slug}`}><FontAwesomeIcon icon={faPencil} />  EDIT</Link>
-      }
+     {/*
+     
+      {item.userEmail === userr?.user.email &&         
+        <Link href={`/posts/edit/${item.slug}`}><FontAwesomeIcon icon={faPencil} />  EDIT</Link>}
+       */}
+     
       </div>
 
 

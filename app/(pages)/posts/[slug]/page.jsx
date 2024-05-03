@@ -17,6 +17,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-regular-svg-icons';
 import { faPencil } from '@fortawesome/free-solid-svg-icons';
+import LikeButton from "@/components/like/LikeButton";
 
 
 const onePost = async ({ params, page, cat }) => {
@@ -104,7 +105,7 @@ return (
     <div className={styles.header}>
       <UserList authorEmail={data?.post?.userEmail} />
       <p className={styles.views}><FontAwesomeIcon icon={faEye} /> views: {data?.post?.views}</p>
-      
+      <LikeButton userEmail={userEmail} slug={slug} />
       </div>
       
       <p className={styles.postDescription}>{data?.post?.desc}</p>

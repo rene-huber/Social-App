@@ -32,7 +32,7 @@ export default function Register() {
               if (res.ok) {
                 setData({ name: "", email: "", password: "" });
                 toast.success("User has been registered!");
-                router.push('/login')
+                router.push('/')
 
               } else {
                 toast.error("Something went wrong!");
