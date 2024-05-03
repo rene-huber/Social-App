@@ -12,7 +12,10 @@
     float: right;
   right: 0;
 }
-
+.views{
+    float: right;
+  right: 0;
+}
   .header {
     display: flex;
     justify-content: space-between;
