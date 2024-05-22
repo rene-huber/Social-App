@@ -1,4 +1,4 @@
-[Live DEMO](https://blog.rene-huber.site/posts)
+[Live DEMO](https://blog.rene-huber.eu/posts)
 
 
 <p align="center">
